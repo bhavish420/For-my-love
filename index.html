@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Rasmalai 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(to top right, #ffdde1, #ee9ca7);
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+      overflow-x: hidden;
+    }
+
+    #lock-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #fff0f5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #lock-screen input {
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      margin-bottom: 20px;
+      width: 200px;
+    }
+
+    #lock-screen button {
+      background-color: #b30059;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    #typing {
+      font-size: 22px;
+      margin-bottom: 40px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #fff;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    .section {
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 20px;
+      max-width: 600px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      backdrop-filter: blur(4px);
+    }
+
+    .section h2 {
+      color: #ffe4ec;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 1.1em;
+      color: #fff;
+    }
+
+    .surprise-btn {
+      margin-top: 40px;
+      background-color: #fff;
+      color: #d1005d;
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .surprise-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: #fff0f5;
+      padding: 30px;
+      border-radius: 20px;
+      color: #d1005d;
+      font-size: 24px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+      z-index: 10;
+    }
+
+    .popup.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      top: 100%;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg); opacity: 0.7; }
+      100% { transform: translateY(-120vh) rotate(45deg); opacity: 0; }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Lock screen -->
+  <div id="lock-screen">
+    <h2>Enter Password to Unlock 💖</h2>
+    <input type="password" id="passcode" placeholder="Enter password" />
+    <button onclick="unlock()">Unlock</button>
+  </div>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Main Content -->
+  <div id="main" style="display:none;">
+    <div id="typing">Hi Rasmalai 💖 Welcome to Our Forever...</div>
+
+    <div class="section">
+      <h2>💌 Dear Rasmalai</h2>
+      <p>
+        Saba, meri pyaari Rasmalai, tum mere dil ka sabse narm kone ho.<br>
+        Tumhari hasi meri zindagi ki roshni hai, aur tumhara naam mere har pal ka sukoon.<br>
+        Main chahta hoon ki har subah tumhari muskurahat se ho aur har raat tumhare khwabon se.<br><br>
+        Tum meri ho, aur main tumhara hoon – forever ❤️
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🌅 Our Dreams</h2>
+      <p>Shaadi, honeymoon, apna ghar, ek cute baby... sab kuch hai mere sapne mein — with you only, Rasmalai 💗</p>
+    </div>
+
+    <button class="surprise-btn" onclick="showSurprise()">Click for Surprise 💝</button>
+
+    <div class="popup" id="popup">
+      I LOVE YOU, RASMALAI 💖 — Forever Yours 😘
+    </div>
+  </div>
+
+  <!-- Hearts Animation -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+    }
+
+    function unlock() {
+      const pass = document.getElementById("passcode").value;
+      if (pass === "rasmalai6397") {
+        document.getElementById("lock-screen").style.display = "none";
+        document.getElementById("main").style.display = "block";
+      } else {
+        alert("Wrong password Tum Rasmalai nahi ho sakti 😢");
+      }
+    }
+
+    function showSurprise() {
+      const popup = document.getElementById("popup");
+      popup.classList.add("active");
+      setTimeout(() => popup.classList.remove("active"), 3000);
+    }
+  </script>
+</body>
+</html>
